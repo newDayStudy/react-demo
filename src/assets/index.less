@@ -1,0 +1,27 @@
+
+#root{
+  height: 100%;
+}
+.outer-wrapper{
+  display: flex;
+  height: 100%;
+  &-container{
+    height: 100%;
+  }
+  &-content{
+    overflow-y: auto;
+    height: calc(100% - 64px);
+    padding: 10px;
+  }
+}
+.ant-layout-header{
+  padding: 0 50px 0 10px;
+}
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ant-table-thead > tr > th:not(:last-child):not(.ant-table-selection-column):not(.ant-table-row-expand-icon-cell):not([colspan])::before{
+  display: none;
+}
