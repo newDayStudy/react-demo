@@ -1,14 +1,8 @@
 import React from 'react'
 import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons'
 import { Layout, Button, Menu, Dropdown } from 'antd';
+import { useNavigate } from 'react-router-dom';
 const { Header } = Layout
-const menu = (
-  <Menu>
-    <Menu.Item>
-      退出
-    </Menu.Item>
-  </Menu>
-)
 const headerStyle = {
   display: 'flex',
   alignItems: 'center',
@@ -16,6 +10,19 @@ const headerStyle = {
 }
 function Head(props) {
   const user = JSON.parse(localStorage.getItem('user'))
+  const handleMenuClick = e => {
+    const navigator = useNavigate()
+    if (e.key == 0) {
+      navigator('/login')
+    }
+  }
+  const menu = (
+    <Menu onClick={handleMenuClick}>
+      <Menu.Item key="0">
+        退出
+      </Menu.Item>
+    </Menu>
+  )
   return (
     <Header style={headerStyle}>
       <Button type="primary" onClick={() => props.setCollapsed(!props.collapsed)}>

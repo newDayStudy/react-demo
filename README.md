@@ -4,3 +4,8 @@
 dev: npm run dev
 ## 执行打包命令
 build: npm run build
+
+
+# server
+node index.js
+## 需创建表

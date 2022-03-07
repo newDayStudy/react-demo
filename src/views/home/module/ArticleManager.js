@@ -21,6 +21,7 @@ function ArticleManager() {
     const user = JSON.parse(localStorage.getItem('user'))
     try {
       const res = await getArticleListApi(user)
+      console.log(res)
       if (res.status == 200 && res.data.DataStatus.StatusCode == 100) {
         setArticleList(res.data.Data)
         setPagination({ ...pagination, total: res.data.Data.length })
