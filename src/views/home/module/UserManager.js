@@ -1,31 +1,31 @@
 
 import React, { useState, useEffect } from 'react'
 import { Table, Button, message } from 'antd'
-import { getUserList as getUserListApi } from '@/api'
+import { getUserList as getUserListApi, deleteUser as deleteUserApi } from '@/api'
 import '@/assets/userManager.less'
+import UserModal from './userManager/userModal'
 function UserManager() {
   const [userList, setUserList] = useState([])
   const [loading, setLoading] = useState(false)
-  const [pagination, setPagination] = useState({
+  const [rowData, setRowData] = useState({})
+  const [paginationProps, setPaginationProps] = useState({
     current: 1,
-    pageSize: 10,
-    showTotal: (total, range) => {
-      return range[0] + '-' + range[1] + ' 共' + total + '条'
-    },
-    showQuickJumper: true,
-    showSizeChanger: true,
-    total: 0,
-    size: 'large',
-    showLessItems: true
+    pageSize: 2,
+    total: 0
   })
+  const [visible, setVisible] = useState(false)
   const getUserList = async () => {
     setLoading(true)
     const user = JSON.parse(localStorage.getItem('user'))
     try {
-      const res = await getUserListApi(user)
+      const res = await getUserListApi({
+        ...user,
+        pageNo: paginationProps.current,
+        pageSize: paginationProps.pageSize
+      })
       if (res.status == 200 && res.data.code == 200) {
-        setUserList(res.data.data)
-        setPagination({ ...pagination, total: res.data.data.length })
+        setUserList(res.data.data.data)
+        setPaginationProps({ ...paginationProps, total: res.data.data.total })
       }
     } finally {
       setLoading(false)
@@ -34,32 +34,33 @@ function UserManager() {
   useEffect(() => {
     getUserList()
   }, [])
-  const deleteUser = index => {
-    userList.splice(index, 1)
-    setUserList([...userList])
-    const total = pagination.total - 1 || 0
-    setPagination({ ...pagination, total: total })
-    message.success('删除成功')
+  const deleteUser = async record => {
+    const res = await deleteUserApi({ id: record.id })
+    if (res.status == 200 && res.data.code == 200) {
+      message.success(res.data.message)
+      getUserList()
+    }
   }
-  const editUser = record => {
-    message.success('修改成功')
+  const addUser = async () => {
+    setRowData({})
+    setVisible(true)
+  }
+  const editUser = async record => {
+    setRowData(record)
+    setVisible(true)
   }
   const columns = [
     {
-      title: '编号',
+      title: '用户ID',
       dataIndex: 'id'
     },
     {
-      title: '姓名',
-      dataIndex: 'name',
+      title: '用户名',
+      dataIndex: 'username'
     },
     {
-      title: '电话',
-      dataIndex: 'telephone',
-    },
-    {
-      title: '住址',
-      dataIndex: 'address',
+      title: '用户身份',
+      dataIndex: 'name'
     },
     {
       title: "操作",
@@ -68,27 +69,50 @@ function UserManager() {
       render(text, record, index) {
         return (
           <span>
-            <Button type="primary" style={{ marginRight: 10 }} onClick={() => editUser(record)}>修改</Button>
-            <Button onClick={() => deleteUser(index)}>删除</Button>
+            <Button type="primary" onClick={() => editUser(record)} style={{ marginRight: 10 }}>修改</Button>
+            <Button onClick={() => deleteUser(record)}>删除</Button>
           </span>
         )
       }
     }
   ]
-  const onChange = (pagination) => {
-    setPagination(pagination)
+  const handleChange = (paginate) => {
+    debugger
+    setPaginationProps({ current: paginate.current, pageSize: paginate.pageSize, total: paginate.total })
+    getUserList()
   }
+
   return (
     <div>
-      <Button type="primary" style={{ marginBottom: 10 }}>新增</Button>
+      <Button type="primary" style={{ marginBottom: 10 }} onClick={addUser}>新增</Button>
       <Table
         rowKey='id'
         dataSource={userList}
         columns={columns}
-        pagination={pagination}
-        onChange={onChange}
+        pagination={{
+          position: ['bottomRight'],
+          current: paginationProps.current,
+          pageSize: paginationProps.pageSize,
+          showTotal: (total, range) => {
+            return range[0] + '-' + range[1] + ' 共' + total + '条'
+          },
+          showQuickJumper: true,
+          showSizeChanger: true,
+          total: paginationProps.total,
+          size: 'large',
+          showLessItems: true
+        }}
         loading={loading}
+        onChange={handleChange}
       />
+      {
+        visible && <UserModal
+          form={rowData}
+          visible={visible}
+          setVisible={setVisible}
+          getUserList={getUserList}
+        />
+      }
     </div>
 
   )
