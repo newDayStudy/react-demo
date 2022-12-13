@@ -8,10 +8,10 @@ function UserManager() {
   const [userList, setUserList] = useState([])
   const [loading, setLoading] = useState(false)
   const [rowData, setRowData] = useState({})
+  const [total, setTotal] = useState(0)
   const [paginationProps, setPaginationProps] = useState({
     current: 1,
     pageSize: 2,
-    total: 0,
   })
   const [visible, setVisible] = useState(false)
   const getUserList = async () => {
@@ -25,7 +25,7 @@ function UserManager() {
       })
       if (res.status == 200 && res.data.code == 200) {
         setUserList(res.data.data.data)
-        setPaginationProps({ ...paginationProps, total: res.data.data.total })
+        setTotal(res.data.data.total)
       }
     } finally {
       setLoading(false)
@@ -33,7 +33,7 @@ function UserManager() {
   }
   useEffect(async () => {
     await getUserList()
-  }, [])
+  }, [paginationProps])
   const deleteUser = async record => {
     const res = await deleteUserApi({ id: record.id })
     if (res.status == 200 && res.data.code == 200) {
@@ -76,10 +76,12 @@ function UserManager() {
       }
     }
   ]
-  const handleChange = async (paginate) => {
-    // debugger
-    setPaginationProps({ current: paginate.current, pageSize: paginate.pageSize, total: paginate.total})
-    await getUserList()
+  const handleChange =({current, pageSize, total}) => {
+    const newProps = {
+      ...paginationProps,
+      ...{current, pageSize}
+    }
+    setPaginationProps(newProps)
   }
 
   return (
@@ -98,7 +100,7 @@ function UserManager() {
           },
           showQuickJumper: true,
           showSizeChanger: true,
-          total: paginationProps.total,
+          total: total,
           size: 'small',
           showLessItems: true
         }}

@@ -4,8 +4,8 @@ module.exports = function (sql, callback) {
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '',
-    database: 'reactdemo'
+    password: '123456',
+    database: 'testdb'
   })
 
   connection.connect()
