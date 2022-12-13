@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Layout } from 'antd';
+import { Layout, Card } from 'antd';
 import SideBar from './components/sideBar'
 const { Content } = Layout;
 import Head from './components/Head'
 function SiderDemo() {
   const [collapsed, setCollapsed] = useState(false)
   return (
-    <div className="outer-wrapper">
-      <SideBar collapsed={collapsed} />
-      <Layout className="outer-wrapper-container">
+    <Layout style={{height:'100%'}}>
         <Head collapsed={collapsed} setCollapsed={setCollapsed} />
-        <Content className="outer-wrapper-content">
-          <Outlet />
-        </Content>
-      </Layout>
-    </div>
+        <Layout>
+            <SideBar collapsed={collapsed} />
+            <Content>
+                <Card>
+                    <Outlet />
+                </Card>
+            </Content>
+        </Layout>
+    </Layout>
   );
 }
 

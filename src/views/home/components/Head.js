@@ -1,12 +1,18 @@
 import React from 'react'
 import { MenuUnfoldOutlined, MenuFoldOutlined, UserOutlined } from '@ant-design/icons'
-import { Layout, Button, Menu, Dropdown } from 'antd';
+import { Layout, Menu, Dropdown } from 'antd';
 import { useNavigate } from 'react-router-dom';
 const { Header } = Layout
 const headerStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between'
+    position: 'sticky',
+    top: 0,
+    zIndex: 1,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    padding: '0 50px 0 25px'
 }
 function Head(props) {
   const user = JSON.parse(localStorage.getItem('user'))
@@ -25,14 +31,18 @@ function Head(props) {
   )
   return (
     <Header style={headerStyle}>
-      <Button type="primary" onClick={() => props.setCollapsed(!props.collapsed)}>
-        {React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
-      </Button>
-      <Dropdown overlay={menu}>
-        <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
-          <UserOutlined style={{ marginRight: 10 }} />{user.username}
-        </a>
-      </Dropdown>
+        <div>
+            <a onClick={() => props.setCollapsed(!props.collapsed)}>
+                {React.createElement(props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
+            </a>
+            <span style={{marginLeft: 10}}>Dashboard</span>
+        </div>
+
+        <Dropdown overlay={menu}>
+            <a className="ant-dropdown-link" onClick={e => e.preventDefault()}>
+                <UserOutlined style={{ marginRight: 10 }} />{user.username}
+            </a>
+        </Dropdown>
     </Header>
   )
 }

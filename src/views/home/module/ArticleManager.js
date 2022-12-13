@@ -13,7 +13,7 @@ function ArticleManager() {
     showQuickJumper: true,
     showSizeChanger: true,
     total: 0,
-    size: 'large',
+    size: 'small',
     showLessItems: true
   })
   const getArticleList = async () => {
@@ -30,24 +30,23 @@ function ArticleManager() {
       setLoading(false)
     }
   }
-  useEffect(() => {
-    getArticleList()
+  useEffect(async () => {
+    await getArticleList()
   }, [])
   const deleteArticle = index => {
     articleList.splice(index, 1)
     setArticleList([...articleList])
     const total = pagination.total - 1 || 0
     setPagination({ ...pagination, total: total })
-    message.success('删除成功')
+    message.success('删除成功').then(r => console.log(r))
   }
   const editArticle = record => {
-    message.success('修改成功')
+    message.success('修改成功').then(r => console.log(r))
   }
   const columns = [
     {
       title: '文章标题',
       dataIndex: 'ArticleTitle',
-      ellipsis: true
     },
     {
       title: '作者',
@@ -57,7 +56,10 @@ function ArticleManager() {
     {
       title: '链接',
       dataIndex: 'ArticleUrl',
-      ellipsis: true
+      ellipsis: true,
+      render(text){
+        return <a href={text} target="_blank">{text}</a>
+      }
     },
     {
       title: '摘要',
@@ -74,7 +76,6 @@ function ArticleManager() {
     {
       title: '发布日期',
       dataIndex: 'ArticlePublishDateTime',
-      ellipsis: true
     },
     {
       title: "操作",
@@ -105,6 +106,7 @@ function ArticleManager() {
         pagination={pagination}
         onChange={onChange}
         loading={loading}
+        size="middle"
       />
     </div>
 
