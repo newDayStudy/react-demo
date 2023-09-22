@@ -2,10 +2,14 @@ import React from 'react'
 import Login from '@/views/login'
 import Home from '@/views/home'
 import Permission from '@/views/permission'
-import UserManager from '@/views/home/module/UserManager'
-import MenuManager from '@/views/home/module/MenuManager'
-import ArticleManager from '@/views/home/module/ArticleManager'
 import Dashboard from "@/views/home/components/dashboard";
+import RcButton from "@/components/button/button";
+import RcIcon from "@/components/icon/icon";
+import RcGrid from "@/components/grid/grid";
+import RcLayout from "@/components/layout/layout";
+import RcDivider from "@/components/divider/divider";
+import RcBreadcrumb from "@/components/breadcrumb/breadcrumb";
+import RcDropdown from "@/components/dropdown/dropdown";
 const routes = [
   {
     path: '',
@@ -30,21 +34,45 @@ const routes = [
         auth: true
       },
       {
-        path: 'userManager',
-        name: 'userManager',
-        component: <UserManager />,
+        path: 'components/button',
+        name: 'button',
+        component: <RcButton />,
         auth: true
       },
       {
-        path: 'menuManager',
-        name: 'menuManager',
-        component: <MenuManager />,
+        path: 'components/icon',
+        name: 'icon',
+        component: <RcIcon />,
         auth: true
       },
       {
-        path: 'articleManager',
-        name: 'articleManager',
-        component: <ArticleManager />,
+        path: 'components/grid',
+        name: 'grid',
+        component: <RcGrid />,
+        auth: true
+      },
+      {
+        path: 'components/divider',
+        name: 'divider',
+        component: <RcDivider />,
+        auth: true
+      },
+      {
+        path: 'components/layout',
+        name: 'layout',
+        component: <RcLayout />,
+        auth: true
+      },
+      {
+        path: 'components/breadcrumb',
+        name: 'breadcrumb',
+        component: <RcBreadcrumb/>,
+        auth: true
+      },
+      {
+        path: 'components/dropdown',
+        name: 'dropdown',
+        component: <RcDropdown/>,
         auth: true
       }
     ]

@@ -14,11 +14,13 @@ function SiderDemo() {
             <Head collapsed={collapsed} setCollapsed={setCollapsed} />
             <Tabs />
             <Content
-                style={{margin: 10}}
+                style={{
+                    margin: 10,
+                    background:'#fff',
+                    padding: 10
+                }}
             >
-                <Card>
-                    <Outlet />
-                </Card>
+                <Outlet />
             </Content>
         </Layout>
     </Layout>

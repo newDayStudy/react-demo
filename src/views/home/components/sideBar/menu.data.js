@@ -1,5 +1,5 @@
 import React from 'react'
-import {AppstoreOutlined, UserOutlined} from '@ant-design/icons';
+import {HomeOutlined, ShopOutlined} from '@ant-design/icons';
 function getItem(
     label,
     key,
@@ -17,9 +17,15 @@ function getItem(
 }
 
 const items= [
-    getItem("首页",  '/home', <UserOutlined/>),
-    getItem('用户管理', '/home/userManager', <UserOutlined />),
-    getItem('菜单管理', '/home/menuManager', <AppstoreOutlined />),
-    getItem('文章管理', '/home/articleManager', <AppstoreOutlined />),
+    getItem("首页",  '/home', <HomeOutlined />),
+    getItem("组件", 'subMenu', <ShopOutlined />, [
+        getItem("button", '/home/components/button'),
+        getItem("icon", '/home/components/icon'),
+        getItem("divider", '/home/components/divider'),
+        getItem("grid", '/home/components/grid'),
+        getItem("layout", '/home/components/layout'),
+        getItem("breadcrumb", '/home/components/breadcrumb'),
+        getItem("dropdown", '/home/components/dropdown')
+    ])
 ];
 export default items

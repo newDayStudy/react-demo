@@ -30,7 +30,7 @@ function SideBar(props) {
   };
   return (
       <div className="side">
-          <div className="logo-wrap">
+          <div className={ ["logo-wrap", !props.collapsed ? '' : 'logo-wrap--center'].join(' ')}>
               <img src={logo} className="logo"/>
               {
                   !props.collapsed ? 'React-Admin' : ''
