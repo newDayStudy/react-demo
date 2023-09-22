@@ -5,7 +5,7 @@ module.exports = function (sql, callback) {
     port: 3306,
     user: 'root',
     password: '123456',
-    database: 'testdb'
+    database: 'database_app'
   })
 
   connection.connect()

@@ -5,6 +5,7 @@ import Permission from '@/views/permission'
 import UserManager from '@/views/home/module/UserManager'
 import MenuManager from '@/views/home/module/MenuManager'
 import ArticleManager from '@/views/home/module/ArticleManager'
+import Dashboard from "@/views/home/components/dashboard";
 const routes = [
   {
     path: '',
@@ -22,6 +23,12 @@ const routes = [
     component: <Home />,
     auth: true,
     children: [
+      {
+        path: '',
+        name: '首页',
+        component: <Dashboard/>,
+        auth: true
+      },
       {
         path: 'userManager',
         name: 'userManager',

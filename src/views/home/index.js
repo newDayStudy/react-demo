@@ -4,14 +4,18 @@ import { Layout, Card } from 'antd';
 import SideBar from './components/sideBar'
 const { Content } = Layout;
 import Head from './components/Head'
+import Tabs from './components/tabs'
 function SiderDemo() {
   const [collapsed, setCollapsed] = useState(false)
   return (
     <Layout style={{height:'100%'}}>
-        <Head collapsed={collapsed} setCollapsed={setCollapsed} />
+        <SideBar collapsed={collapsed} />
         <Layout>
-            <SideBar collapsed={collapsed} />
-            <Content>
+            <Head collapsed={collapsed} setCollapsed={setCollapsed} />
+            <Tabs />
+            <Content
+                style={{margin: 10}}
+            >
                 <Card>
                     <Outlet />
                 </Card>
