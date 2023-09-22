@@ -17,7 +17,8 @@ function SiderDemo() {
                 style={{
                     margin: 10,
                     background:'#fff',
-                    padding: 10
+                    padding: 20,
+                    overflow: 'auto'
                 }}
             >
                 <Outlet />
