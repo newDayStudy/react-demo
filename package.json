@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "react-demo",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack-dev-server --watch",
+    "dev": ".\\node_modules\\.bin\\webpack-dev-server --watch",
     "build": "./node_modules/.bin/webpack",
     "prepare": "husky install",
     "serve": "node server/index.js"

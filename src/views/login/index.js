@@ -6,13 +6,10 @@ import {add} from "@/redux/modules/tabs-store";
 import {useDispatch} from "react-redux";
 
 function Login(props){
-  const [user, setUser] = useState({
-    username: '',
-    password: ''
-  })
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const onFinish = async () => {
+  const onFinish = async (form) => {
+      console.log(form)
     // const res = await login(user)
     // if (res.status == 200 && res.data.code == 200) {
     //   localStorage.setItem('user', JSON.stringify(res.data.data))
@@ -43,14 +40,14 @@ function Login(props){
           name="username"
           rules={[{required: true, message: '请输入用户名'}]}
         >
-          <Input value={user.username} onInput={e => setUser({username: e.target.value, password: user.password})}/>
+          <Input />
         </Form.Item>
         <Form.Item
           label="密码"
           name="password"
           rules={[{required: true, message: '请输入密码'}]}
         >
-          <Input.Password value={user.password} onInput={e => setUser({username: user.username, password: e.target.value})}/>
+          <Input.Password />
         </Form.Item>
         <Form.Item wrapperCol={{offset: 4}}>
           <Button type="primary" htmlType="submit">
