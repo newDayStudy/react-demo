@@ -19,7 +19,9 @@ function getItem(
 const items= [
     getItem("首页",  '/home', <HomeOutlined />),
     getItem("组件", 'subMenu', <ShopOutlined />, [
+        getItem("笑话大全", '/home/components/table'),
         getItem("button", '/home/components/button'),
+        getItem("chart", '/home/components/echarts'),
         getItem("icon", '/home/components/icon'),
         getItem("divider", '/home/components/divider'),
         getItem("grid", '/home/components/grid'),

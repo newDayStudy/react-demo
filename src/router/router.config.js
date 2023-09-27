@@ -10,6 +10,8 @@ import RcLayout from "@/components/layout/layout";
 import RcDivider from "@/components/divider/divider";
 import RcBreadcrumb from "@/components/breadcrumb/breadcrumb";
 import RcDropdown from "@/components/dropdown/dropdown";
+import RcChart from "@/components/echarts/chart";
+import RcTable from "@/components/table/table";
 const routes = [
   {
     path: '',
@@ -31,6 +33,12 @@ const routes = [
         path: '',
         name: '首页',
         component: <Dashboard/>,
+        auth: true
+      },
+      {
+        path: 'components/table',
+        name: 'table',
+        component: <RcTable />,
         auth: true
       },
       {
@@ -73,6 +81,12 @@ const routes = [
         path: 'components/dropdown',
         name: 'dropdown',
         component: <RcDropdown/>,
+        auth: true
+      },
+      {
+        path: 'components/echarts',
+        name: 'chart',
+        component: <RcChart/>,
         auth: true
       }
     ]

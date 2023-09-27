@@ -5,7 +5,7 @@ function Permission() {
   return (
     <div>
       {
-        isLogin ? < Navigate to="/home/userManager" /> : <Navigate to="/login" />
+        isLogin ? < Navigate to="/home" /> : <Navigate to="/login" />
       }
     </div>
 

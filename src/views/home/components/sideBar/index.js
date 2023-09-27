@@ -43,7 +43,7 @@ function SideBar(props) {
               }
           </div>
           <Sider theme="dark" trigger={null} collapsible collapsed={props.collapsed}>
-              <Menu theme="dark" mode="inline" openKeys={openKeys} selectedKeys={defaultSelectedKeys} items={items} onClick={(e) => onClick(e)}></Menu>
+              <Menu theme="dark" mode="inline" selectedKeys={defaultSelectedKeys} items={items} onClick={(e) => onClick(e)}></Menu>
           </Sider>
       </div>
   )

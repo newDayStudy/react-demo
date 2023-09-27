@@ -6,7 +6,7 @@
     "dev": "./node_modules/.bin/webpack-dev-server --watch",
     "build": "./node_modules/.bin/webpack",
     "prepare": "husky install",
-    "serve": "node server/index.js"
+    "serve": "node ./src/server/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -38,14 +38,20 @@
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "echarts": "^5.4.3",
+    "echarts-gl": "^2.0.9",
     "element-react": "^1.4.34",
     "element-theme-default": "^1.4.13",
+    "jquery": "^3.7.1",
     "jsonwebtoken": "^9.0.2",
+    "kao2": "^1.1.3",
+    "koa": "^2.14.2",
+    "koa-router": "^7.3.0",
     "mysql": "^2.18.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.2.1",
+    "swiper": "^6.4.1",
     "webpack": "^2.7.0"
   }
 }

@@ -18,7 +18,7 @@ function SiderDemo() {
                     margin: 10,
                     background:'#fff',
                     padding: 20,
-                    overflow: 'auto'
+                    overflow: 'hidden auto'
                 }}
             >
                 <Outlet />
