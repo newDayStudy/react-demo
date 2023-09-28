@@ -12,6 +12,8 @@ import RcBreadcrumb from "@/components/breadcrumb/breadcrumb";
 import RcDropdown from "@/components/dropdown/dropdown";
 import RcChart from "@/components/echarts/chart";
 import RcTable from "@/components/table/table";
+import RcBook from "@/components/book/book";
+import RcCar from "@/components/car/car";
 const routes = [
   {
     path: '',
@@ -42,6 +44,12 @@ const routes = [
         auth: true
       },
       {
+        path: "components/car",
+        name: 'car',
+        component: <RcCar/>,
+        auth: true
+      },
+      {
         path: 'components/button',
         name: 'button',
         component: <RcButton />,
@@ -63,6 +71,12 @@ const routes = [
         path: 'components/divider',
         name: 'divider',
         component: <RcDivider />,
+        auth: true
+      },
+      {
+        path: "components/book",
+        name: 'book',
+        component: <RcBook/>,
         auth: true
       },
       {

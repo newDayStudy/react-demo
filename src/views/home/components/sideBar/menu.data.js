@@ -1,5 +1,5 @@
 import React from 'react'
-import {HomeOutlined, ShopOutlined} from '@ant-design/icons';
+import {HomeOutlined, BarsOutlined} from '@ant-design/icons';
 function getItem(
     label,
     key,
@@ -18,16 +18,8 @@ function getItem(
 
 const items= [
     getItem("首页",  '/home', <HomeOutlined />),
-    getItem("组件", 'subMenu', <ShopOutlined />, [
-        getItem("笑话大全", '/home/components/table'),
-        getItem("button", '/home/components/button'),
-        getItem("chart", '/home/components/echarts'),
-        getItem("icon", '/home/components/icon'),
-        getItem("divider", '/home/components/divider'),
-        getItem("grid", '/home/components/grid'),
-        getItem("layout", '/home/components/layout'),
-        getItem("breadcrumb", '/home/components/breadcrumb'),
-        getItem("dropdown", '/home/components/dropdown')
-    ])
+    getItem("笑话", '/home/components/layout',<BarsOutlined />),
+    getItem("书籍", '/home/components/book',<BarsOutlined />),
+    getItem("车品牌", '/home/components/car',<BarsOutlined />),
 ];
 export default items

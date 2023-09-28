@@ -7,7 +7,7 @@ function RcChartRight(props={}){
             const chart = echarts.init(chartEef.current)
             chart.setOption({
                 title: {
-                    text: '玫瑰图',
+                    text: '扇形图',
                 },
                 tooltip: {
                     trigger: 'item',
@@ -23,19 +23,13 @@ function RcChartRight(props={}){
                     {
                         name: 'Radius Mode',
                         type: 'pie',
-                        radius: [20, 140],
+                        // radius: [20, 140],
                         center: ['50%', '60%'],
-                        roseType: 'radius',
                         itemStyle: {
                             borderRadius: 5
                         },
                         label: {
-                            show: false
-                        },
-                        emphasis: {
-                            label: {
-                                show: true
-                            }
+                            show: true
                         },
                         data: [
                             { value: 40, name: 'rose 1' },
