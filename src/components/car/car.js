@@ -49,13 +49,15 @@ function RcCar(){
             })
         }
         return () => {
-            charRef.current.removeEventListener('mousemove', move)
-            charRef.current.removeEventListener('mousedown', () => {
-                flag = false
-            })
-            charRef.current.removeEventListener('mouseup', () => {
-                flag = true
-            })
+            if (charRef.current) {
+                charRef.current.removeEventListener('mousemove', move)
+                charRef.current.removeEventListener('mousedown', () => {
+                    flag = false
+                })
+                charRef.current.removeEventListener('mouseup', () => {
+                    flag = true
+                })
+            }
         }
     }, [charRef, contentRef]);
 

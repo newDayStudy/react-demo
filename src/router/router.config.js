@@ -14,6 +14,8 @@ import RcChart from "@/components/echarts/chart";
 import RcTable from "@/components/table/table";
 import RcBook from "@/components/book/book";
 import RcCar from "@/components/car/car";
+import Rc3d from "@/components/3D/3d";
+import Rc3d2 from "@/components/3D/3d2";
 const routes = [
   {
     path: '',
@@ -53,6 +55,18 @@ const routes = [
         path: 'components/button',
         name: 'button',
         component: <RcButton />,
+        auth: true
+      },
+      {
+        path: 'components/3d',
+        name: '3d',
+        component: <Rc3d />,
+        auth: true
+      },
+      {
+        path: 'components/3d2',
+        name: '3d2',
+        component: <Rc3d2 />,
         auth: true
       },
       {
