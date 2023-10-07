@@ -16,6 +16,7 @@ import RcBook from "@/components/book/book";
 import RcCar from "@/components/car/car";
 import Rc3d from "@/components/3D/3d";
 import Rc3d2 from "@/components/3D/3d2";
+import RcCustom from "@/components/echarts/custom";
 const routes = [
   {
     path: '',
@@ -55,6 +56,12 @@ const routes = [
         path: 'components/button',
         name: 'button',
         component: <RcButton />,
+        auth: true
+      },
+      {
+        path: 'components/custom',
+        name: 'custom',
+        component: <RcCustom />,
         auth: true
       },
       {

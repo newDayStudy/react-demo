@@ -39,15 +39,23 @@ function Rc3d () {
             var imgArr = [
                 'https://tse3-mm.cn.bing.net/th/id/OIP-C.etXoe50HSDus2k23KHperAHaE8?w=280&h=187&c=7&r=0&o=5&pid=1.7',
                 'https://tse3-mm.cn.bing.net/th/id/OIP-C.v3vzmbMb_HA57HlyOh_w1gHaE9?w=280&h=187&c=7&r=0&o=5&pid=1.7',
-                'https://tse1-mm.cn.bing.net/th/id/OIP-C.xvMB5Q6dWfa94MGRarne-wHaE8?w=277&h=185&c=7&r=0&o=5&pid=1.7',
-                'https://tse4-mm.cn.bing.net/th/id/OIP-C.a9EvTUQaISuW5QrMlxK9PwHaE7?w=278&h=187&c=7&r=0&o=5&pid=1.7'
+                'https://tse1-mm.cn.bing.net/th/id/OIP-C.xvMB5Q6dWfa94MGRarne-wHaE8?w=280&h=187&c=7&r=0&o=5&pid=1.7',
+                'https://tse4-mm.cn.bing.net/th/id/OIP-C.a9EvTUQaISuW5QrMlxK9PwHaE7?w=280&h=187&c=7&r=0&o=5&pid=1.7',
+                'https://tse2-mm.cn.bing.net/th/id/OIP-C.7sAjIeoQYWnXV_QnuYs1jQHaEK?w=280&h=187&c=7&r=0&o=5&pid=1.7',
+                'https://tse3-mm.cn.bing.net/th/id/OIP-C.J48eC50dvoQP_F_LElaZEAHaFj?w=279&h=180&c=7&r=0&o=5&pid=1.7',
+                'https://tse1-mm.cn.bing.net/th/id/OIP-C.siDvr7vOpbPiqasb9sOwHgHaEK?w=331&h=186&c=7&r=0&o=5&pid=1.7'
             ]
+            let i = 2
             timer = setInterval(() => {
                 cIndex++
+                i++
                 if (cIndex > 2) {
                     cIndex = 0
                 }
-                // img[1].setAttribute('src', imgArr[cIndex])
+                if (i > imgArr.length) {
+                    i=0
+                }
+                img[1].setAttribute('src', imgArr[i])
                 arr[cIndex]()
             }, 4000)
         }
