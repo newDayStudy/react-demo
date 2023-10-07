@@ -47,7 +47,7 @@ function Rc3d () {
                 if (cIndex > 2) {
                     cIndex = 0
                 }
-                // img[1].setAttribute('src', 'https://tse4-mm.cn.bing.net/th/id/OIP-C.a9EvTUQaISuW5QrMlxK9PwHaE7?w=278&h=187&c=7&r=0&o=5&pid=1.7')
+                // img[1].setAttribute('src', imgArr[cIndex])
                 arr[cIndex]()
             }, 4000)
         }
