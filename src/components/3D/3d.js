@@ -55,7 +55,7 @@ function Rc3d () {
                 if (i > imgArr.length) {
                     i=0
                 }
-                img[1].setAttribute('src', imgArr[i])
+                // img[1].setAttribute('src', imgArr[i])
                 arr[cIndex]()
             }, 4000)
         }

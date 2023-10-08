@@ -37,7 +37,9 @@ function RcCustom() {
                                     width: size[0] / 2,
                                     height: size[1]
                                 },
-                                style: api.style()
+                                style: {
+                                    fill: 'rgb(84, 112, 198)'
+                                }
                             };
                         },
                         encode: {
