@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,
+        body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .wrapper_{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            perspective: 500px;
+        }
+        .box{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin:auto;
+            transform-style: preserve-3d;
+        }
+
+        .box-img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .box-img img{
+            width: 100%;
+            height: 100%;
+            user-select: none;
+        }
+        .box-img:nth-child(1){
+            transform-origin: left center;
+            transform: translateZ(-50vw) translateX(100vw) rotateY(-90deg);
+        }
+        .box-img:nth-child(2){
+            transform-origin: center center;
+            transform: translateZ(0) translateX(-50vw) rotateY(90deg);
+        }
+        .box-img:nth-child(3){
+            transform-origin: center center;
+            transform: translateZ(-.35vw) translateY(-2vw) rotateX(90deg);
+            height: 100vw;
+        }
+        .box-img:nth-child(4){
+            transform-origin: center center;
+            transform: translateZ(0) translateY(-50vw) rotateX(270deg);
+            height: 100vw;
+        }
+        .box-img:nth-child(5){
+            transform: translateZ(-50vw);
+        }
+        .box-img:nth-child(6){
+            transform-origin: center center;
+            transform: translateZ(50vw) rotateY(-180deg);
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper_">
+    <div class="box"></div>
+</div>
+<script>
+    const imgList = [
+        'https://img.alicdn.com/imgextra/i3/O1CN01LsO1Bk20QbKpFTUQr_!!6000000006844-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i3/O1CN01uTWCLc1XOCOuA92H0_!!6000000002913-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i2/O1CN01nYe2Mn1ohkmBVyKpp_!!6000000005257-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i4/O1CN016lU3YJ1JdrJuFTcWt_!!6000000001052-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i4/O1CN014TNffn1nlaTfA98Fg_!!6000000005130-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i1/O1CN01sS5m781ya6JgLSaVk_!!6000000006594-0-tps-1500-1500.jpg',
+    ]
+
+    const box = document.querySelector('.box')
+    const fragment = document.createDocumentFragment()
+    for (let i = 0, len=imgList.length;i<len;i++) {
+        const div = document.createElement('div')
+        const img = document.createElement('img')
+        img.setAttribute('src', imgList[i])
+        div.setAttribute('class', 'box-img')
+        div.appendChild(img)
+        fragment.appendChild(div)
+    }
+    box.appendChild(fragment)
+
+
+    let drag = false
+    let startX = 0, startY=0
+    document.addEventListener('mousedown', function (e) {
+        console.log('e', e)
+        drag = true
+        startX = e.clientX
+        startY = e.clientY
+    }, false)
+    document.addEventListener('mousemove', function (e) {
+        if (drag) {
+            const nowX = e.clientX
+            const nowY = e.clientY
+
+            const degX = Math.PI / 180 * (nowX - startX)
+            const degY = Math.PI / 180 * (nowY - startY)
+
+            box.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
+        }
+    }, false)
+    document.addEventListener('mouseup', function (e) {
+        drag = false
+        startX = e.clientX
+        startY = e.clientY
+    }, false)
+</script>
+</body>
+</html>
