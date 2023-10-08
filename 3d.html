@@ -97,31 +97,59 @@
     }
     box.appendChild(fragment)
 
+    if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
 
-    let drag = false
-    let startX = 0, startY=0
-    document.addEventListener('mousedown', function (e) {
-        console.log('e', e)
-        drag = true
-        startX = e.clientX
-        startY = e.clientY
-    }, false)
-    document.addEventListener('mousemove', function (e) {
-        if (drag) {
-            const nowX = e.clientX
-            const nowY = e.clientY
+        // 当前设备是移动设备
+        document.addEventListener('touchstart', function (e) {
+            console.log('e', e)
+            drag = true
+            startX = e.changedTouches[0].clientX
+            startY = e.changedTouches[0].clientY
+        }, false)
+        document.addEventListener('touchmove', function (e) {
+            if (drag) {
+                const nowX = e.changedTouches[0].clientX
+                const nowY = e.changedTouches[0].clientY
 
-            const degX = Math.PI / 180 * (nowX - startX)
-            const degY = Math.PI / 180 * (nowY - startY)
+                const degX = Math.PI / 180 * (nowX - startX)
+                const degY = Math.PI / 180 * (nowY - startY)
 
-            box.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
-        }
-    }, false)
-    document.addEventListener('mouseup', function (e) {
-        drag = false
-        startX = e.clientX
-        startY = e.clientY
-    }, false)
+                box.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
+            }
+        }, false)
+        document.addEventListener('touchend', function (e) {
+            console.log('e', e)
+            drag = false
+            startX = e.changedTouches[0].clientX
+            startY = e.changedTouches[0].clientY
+        }, false)
+    } else{
+        let drag = false
+        let startX = 0, startY=0
+        document.addEventListener('mousedown', function (e) {
+            console.log('e', e)
+            drag = true
+            startX = e.clientX
+            startY = e.clientY
+        }, false)
+        document.addEventListener('mousemove', function (e) {
+            if (drag) {
+                const nowX = e.clientX
+                const nowY = e.clientY
+
+                const degX = Math.PI / 180 * (nowX - startX)
+                const degY = Math.PI / 180 * (nowY - startY)
+
+                box.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
+            }
+        }, false)
+        document.addEventListener('mouseup', function (e) {
+            drag = false
+            startX = e.clientX
+            startY = e.clientY
+        }, false)
+    }
+
 </script>
 </body>
 </html>
