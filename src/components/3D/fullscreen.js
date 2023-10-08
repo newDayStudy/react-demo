@@ -25,8 +25,8 @@ function RcFullScreen(){
                     const nowX = e.clientX
                     const nowY = e.clientY
 
-                    const degX = Math.PI / 180 * Math.abs(nowX - startX)
-                    const degY = Math.PI / 180 * Math.abs(nowY - startY)
+                    const degX = Math.PI / 180 * (nowX - startX)
+                    const degY = Math.PI / 180 * (nowY - startY)
 
                     parent.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
                 }

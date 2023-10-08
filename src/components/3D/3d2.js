@@ -75,8 +75,8 @@ const animate = {
                 // const radian = Math.atan2(Math.abs(nowY - startY), Math.abs(nowX - startX))
                 // const angle = 180 / Math.PI * radian
                 // parent.style.transform = `rotateY(${angle}deg)`
-                const degX = Math.PI / 180 * Math.abs(nowX - startX)
-                const degY = Math.PI / 180 * Math.abs(nowY - startY)
+                const degX = Math.PI / 180 * nowX - startX
+                const degY = Math.PI / 180 * nowY - startY
                 // console.log(degX, degY)
                 parent.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
             }
