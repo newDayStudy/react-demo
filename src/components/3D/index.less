@@ -64,6 +64,7 @@
   transform-style: preserve-3d;
   width: 300px;
   height: 150px;
+  transform: scale(4);
 }
 
 .box-img{
@@ -85,19 +86,19 @@
   transform: translateZ(-150px) translateX(-300px) rotateY(90deg);
 }
 .box-img:nth-child(3){
-  transform-origin: bottom center;
-  transform: translateZ(-150px) translateY(-150px) rotateX(-90deg);
+  transform-origin: center center;
+  transform: translateZ(0) translateY(-1px) rotateX(-270deg);
   height: 300px;
 }
 .box-img:nth-child(4){
-  transform-origin: top center;
-  transform: translateZ(-150px) translateY(0px) rotateX(90deg);
+  transform-origin: center center;
+  transform: translateZ(0px) translateY(-149px) rotateX(270deg);
   height: 300px;
 }
 .box-img:nth-child(5){
-  transform: translateZ(-150px);
+  transform: translateZ(-149px);
 }
 .box-img:nth-child(6){
   transform-origin: center center;
-  transform: translateZ(150px) rotateY(-180deg);
+  transform: translateZ(149px) rotateY(-180deg);
 }

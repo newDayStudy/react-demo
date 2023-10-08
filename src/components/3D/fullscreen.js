@@ -28,7 +28,7 @@ function RcFullScreen(){
                     const degX = Math.PI / 180 * (nowX - startX)
                     const degY = Math.PI / 180 * (nowY - startY)
 
-                    parent.style.transform = `rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
+                    parent.style.transform = `scale(4) rotateX(${degY * 20}deg) rotateY(${degX * 100}deg)`
                 }
             }, false)
             document.addEventListener('mouseup', function (e) {
