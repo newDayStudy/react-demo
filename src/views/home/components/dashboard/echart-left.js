@@ -4,6 +4,7 @@ function RcChartLeft(props={}){
     const chartEef = React.createRef()
     useEffect(() => {
         if (chartEef.current) {
+            console.log(chartEef.current)
             const chart = echarts.init(chartEef.current)
             chart.setOption({
                 title: {
