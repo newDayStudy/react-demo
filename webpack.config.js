@@ -61,7 +61,17 @@ module.exports = {
   ],
   devtool: 'source-map',
   devServer: {
-    open: true,
+    contentBase: '.',
+    open: false,
+    proxy: {
+      "/api": {
+        target: 'http://localhost:4000/',
+        crossorigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
   watch: true
 }

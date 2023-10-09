@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        canvas { width: 100%; height: 100% }
+    </style>
+    <script src="./node_modules/three/build/three.js"></script>
+</head>
+<body>
+<div id="canvasBox"></div>
+<script>
+    // var scene = new THREE.Scene(); // 场景
+    //
+    // // 透视相机
+    // var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+    //
+    // // 渲染器
+    // var renderer = new THREE.WebGLRenderer();
+    // // 设置渲染器的区域大小
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    // // 将渲染器添加到页面
+    // document.body.appendChild(renderer.domElement);
+    //
+    // // 创建辅助坐标系
+    // const axesHelper = new THREE.AxesHelper();
+    // axesHelper.setColors('pink', 0xf0ff00, 'rgb(60, 200, 130)')
+    // scene.add(axesHelper);
+    //
+    // var img = [
+    //     './src/assets/images/OIP-C.jpg',
+    //     './src/assets/images/OIP-C-1.jpg',
+    //     './src/assets/images/OIP-C.jpg',
+    //     './src/assets/images/OIP-C-1.jpg',
+    //     './src/assets/images/OIP-C.jpg',
+    //     './src/assets/images/OIP-C-1.jpg',
+    // ]
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const textures = [
+    //     'https://img.alicdn.com/imgextra/i3/O1CN01LsO1Bk20QbKpFTUQr_!!6000000006844-0-tps-1500-1500.jpg',
+    //     'https://img.alicdn.com/imgextra/i3/O1CN01uTWCLc1XOCOuA92H0_!!6000000002913-0-tps-1500-1500.jpg',
+    //     'https://img.alicdn.com/imgextra/i4/O1CN016lU3YJ1JdrJuFTcWt_!!6000000001052-0-tps-1500-1500.jpg',
+    //     'https://img.alicdn.com/imgextra/i2/O1CN01nYe2Mn1ohkmBVyKpp_!!6000000005257-0-tps-1500-1500.jpg',
+    //     'https://img.alicdn.com/imgextra/i4/O1CN014TNffn1nlaTfA98Fg_!!6000000005130-0-tps-1500-1500.jpg',
+    //     'https://img.alicdn.com/imgextra/i1/O1CN01sS5m781ya6JgLSaVk_!!6000000006594-0-tps-1500-1500.jpg',
+    // ];
+    // const materials = [];
+    // const textureLoader = new THREE.TextureLoader();
+    // for (let i = 0; i < 6; i++) {
+    //     materials.push(
+    //         new THREE.MeshBasicMaterial({ map: textureLoader.load(textures[i]) })
+    //     );
+    // }
+    // const skyBox = new THREE.Mesh(geometry, materials);
+    // skyBox.geometry.scale(1, 1, -1);
+    // scene.add(skyBox);
+    //
+    // renderer.render(scene, camera)
+
+
+
+</script>
+<script type="importmap">
+    {
+        "imports": {
+            "three": "./node_modules/three/src/Three.js"
+        }
+    }
+</script>
+<script type="module">
+    import * as THREE from "./node_modules/three/src/Three.js"
+    import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js'
+
+    // 创建场景
+    const scene = new THREE.Scene()
+    // 创建相机
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000)
+    camera.position.set(0, 0, 1)
+    camera.lookAt(scene.position)
+
+    // 创建辅助坐标系
+    const axesHelper = new THREE.AxesHelper()
+    scene.add(axesHelper)
+
+    // 创建渲染器
+    const renderer = new THREE.WebGLRenderer()
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    document.getElementById('canvasBox').appendChild(renderer.domElement)
+
+    // 创建轨道控制器
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.enableDamping = true
+    controls.enableZoom = false
+    controls.addEventListener('change', function () {
+        console.log(camera.position)
+    });//监听鼠标、键盘事件
+
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const textures = [
+        'https://img.alicdn.com/imgextra/i3/O1CN01LsO1Bk20QbKpFTUQr_!!6000000006844-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i3/O1CN01uTWCLc1XOCOuA92H0_!!6000000002913-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i4/O1CN016lU3YJ1JdrJuFTcWt_!!6000000001052-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i2/O1CN01nYe2Mn1ohkmBVyKpp_!!6000000005257-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i4/O1CN014TNffn1nlaTfA98Fg_!!6000000005130-0-tps-1500-1500.jpg',
+        'https://img.alicdn.com/imgextra/i1/O1CN01sS5m781ya6JgLSaVk_!!6000000006594-0-tps-1500-1500.jpg',
+    ];
+    const materials = [];
+    const textureLoader = new THREE.TextureLoader();
+    for (let i = 0; i < 6; i++) {
+        materials.push(
+            new THREE.MeshBasicMaterial({ map: textureLoader.load(textures[i]) })
+        );
+    }
+    const skyBox = new THREE.Mesh(geometry, materials);
+    skyBox.geometry.scale(1, 1, -1);
+    scene.add(skyBox);
+
+    // 循环执行
+    function animate() {
+        controls.update()
+        renderer.render( scene, camera )
+        requestAnimationFrame( animate )
+    }
+
+    // 执行动画函数
+    animate()
+
+
+</script>
+
+</body>
+</html>
