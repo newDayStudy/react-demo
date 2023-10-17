@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            height:100px;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="loadingText"></p>
+        <ul class="refreshContainer">
+        </ul>
+    </main>
+    <script>
+        var rc = document.querySelector('.refreshContainer')
+        var loadingText = document.querySelector('.loadingText')
+        var frag = document.createDocumentFragment()
+        for (let i = 0; i<10;i++) {
+            var li = document.createElement('li')
+            li.innerHTML = i+1
+            frag.appendChild(li)
+        }
+        rc.appendChild(frag)
+
+        var startPos = 0,distance = 0
+
+        rc.addEventListener('touchstart', function (evt){
+            startPos = evt.touches[0].pageY
+            rc.style.position = 'relative'
+            rc.style.transform = 'transform 0s'
+        }, false)
+
+        rc.addEventListener('touchmove', function (e) {
+            distance = e.touches[0].pageY - startPos
+            if (distance > 0 && distance < 60) {
+                loadingText.innerText = '下拉刷新'
+                rc.style.transform = `translateY(${distance}px)`
+                if (distance > 55) {
+                    loadingText.innerText = '释放更新'
+                }
+            }
+        },false)
+
+        rc.addEventListener('touchend', function (e){
+            rc.style.transition = 'transform 0.5s ease 1s'
+            rc.style.transform = 'translateY(0px)'
+            loadingText.innerText = '更新中'
+            setTimeout(() => {
+                loadingText.innerText = ''
+            }, 2000)
+        }, false)
+
+    </script>
+</body>
+</html>
