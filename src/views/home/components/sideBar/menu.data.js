@@ -25,6 +25,7 @@ const items= [
     getItem("3D", 'subMenu',<BarsOutlined />, [
         getItem("3D1", '/home/components/3d'),
         getItem("3D2", '/home/components/3d2'),
+        getItem("3D3", '/home/components/3d3'),
         getItem("360全景", '/home/components/360'),
     ]),
 

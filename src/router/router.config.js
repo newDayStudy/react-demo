@@ -18,6 +18,7 @@ import Rc3d from "@/components/3D/3d";
 import Rc3d2 from "@/components/3D/3d2";
 import RcCustom from "@/components/echarts/custom";
 import RcFullScreen from "@/components/3D/fullscreen";
+import Rc3d3 from "@/components/3D/3d3";
 const routes = [
   {
     path: '',
@@ -75,6 +76,12 @@ const routes = [
         path: 'components/3d2',
         name: '3d2',
         component: <Rc3d2 />,
+        auth: true
+      },
+      {
+        path: 'components/3d3',
+        name: '3d3',
+        component: <Rc3d3 />,
         auth: true
       },
       {

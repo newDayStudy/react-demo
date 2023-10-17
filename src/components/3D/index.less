@@ -5,7 +5,6 @@
   bottom: 0;
   right: 0;
   margin: auto;
-  perspective: 1000px;
 }
 .parent{
   position: absolute;
@@ -101,4 +100,30 @@
 .box-img:nth-child(6){
   transform-origin: center center;
   transform: translateZ(149px) rotateY(-180deg);
+}
+
+.main{
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height: 0;
+  transform: translateZ(-2000px);
+}
+.item{
+  width: 120px;
+  height: 160px;
+  background: rgba(0,127,127,0.5);
+  border: 1px solid rgba(127,255,255,0.25);
+  box-shadow: 0 0 4px rgba(0,255,255,0.5);
+  position: absolute;
+  top: -80px;
+  left: -60px;
+  transform: translateZ(0);
+  transition: 4s ease-in-out;
+  font-family: 'Microsoft yahei';
+  text-align: center;
+  font-size: 60px;
+  line-height: 160px;
+  color: rgba(255,255,255,.5);
 }
