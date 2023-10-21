@@ -1,7 +1,7 @@
 import React from "react";
 import {Row, Col, Card, Divider} from "antd";
 import bulletin from '../../../../mock/bulletin.json'
-import news from '../../../../mock/news_gn.json'
+// import news from '../../../../mock/news_gn.json'
 import {Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {Autoplay} from "swiper/core";
 import RcChartLeft from "./dashboard/echart-left";
@@ -10,6 +10,12 @@ import RcChartRight from "./dashboard/echart-right";
 // Import Swiper styles
 import 'swiper/swiper-bundle.css';
 SwiperCore.use([Autoplay])
+
+const news = {
+    result: {
+        data: []
+    }
+}
 function Dashboard() {
     let data = bulletin.result.list
     let new_data = news.result.data

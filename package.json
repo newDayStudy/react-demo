@@ -6,7 +6,9 @@
     "dev": ".\\node_modules\\.bin\\webpack-dev-server --watch",
     "build": "./node_modules/.bin/webpack",
     "prepare": "husky install",
-    "serve": "node ./src/server/index.js"
+    "serve": "node ./src/server/index.js",
+    "lint": "eslint --fix ./src",
+    "dll": "./node_modules/.bin/webpack --config=webpack.dll.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,8 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-react": "^7.29.3",
     "file-loader": "^4.1.0",
+    "happypack": "^5.0.1",
+    "hard-source-webpack-plugin": "^0.13.1",
     "html-webpack-plugin": "^1.7.0",
     "husky": "^7.0.4",
     "less": "^3.0.0",

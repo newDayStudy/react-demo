@@ -1,6 +1,12 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const hardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+const HappyPack = require('happypack')
+const os = require('os')
+const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -8,13 +14,18 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
+    // noParse:function (content) {
+    //   return /jquery|lodash/.test(content)
+    // } ,
     rules: [
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-react']
-        },
+        loader: 'happypack/loader?id=happyBabel',
+        exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'src')]
+        // options: {
+        //   presets: ['@babel/preset-react']
+        // },
       },
       {
         test: /\.css$/,
@@ -52,14 +63,35 @@ module.exports = {
     }
   },
   plugins: [
+      new HappyPack({
+        id: 'happyBabel',
+        loaders: [
+          {
+            path: 'babel-loader',
+            cache: true
+          }
+        ],
+        threadPool: happyThreadPool,
+        verbose: true
+      }),
+    new hardSourceWebpackPlugin(),
     new CleanWebpackPlugin({}),
+    // new webpack.DllReferencePlugin({
+    //   context: path.join(__dirname),
+    //   manifest: require('./public/vendor/react.manifest.json')
+    // }),
+    // new webpack.DllReferencePlugin({
+    //   context: path.join(__dirname),
+    //    manifest: require('./public/vendor/vendor.manifest.json')
+    // }),
+
     new htmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'index.html'),
       inject: true
     })
   ],
-  devtool: 'source-map',
+  devtool: 'eval-cheap-module-source-map',
   devServer: {
     contentBase: '.',
     open: false,

@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import carBrand from '../../../mock/carBrand.json'
+// import carBrand from '../../../mock/carBrand.json'
 import {List} from "antd";
 import {throttle} from 'lodash'
 function createChar(){
