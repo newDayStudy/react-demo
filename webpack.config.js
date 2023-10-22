@@ -7,6 +7,8 @@ const HappyPack = require('happypack')
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
 
+console.log(path.join(__dirname))
+
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -23,9 +25,6 @@ module.exports = {
         loader: 'happypack/loader?id=happyBabel',
         exclude: /node_modules/,
         include: [path.resolve(__dirname, 'src')]
-        // options: {
-        //   presets: ['@babel/preset-react']
-        // },
       },
       {
         test: /\.css$/,
@@ -76,15 +75,14 @@ module.exports = {
       }),
     new hardSourceWebpackPlugin(),
     new CleanWebpackPlugin({}),
-    // new webpack.DllReferencePlugin({
-    //   context: path.join(__dirname),
-    //   manifest: require('./public/vendor/react.manifest.json')
-    // }),
-    // new webpack.DllReferencePlugin({
-    //   context: path.join(__dirname),
-    //    manifest: require('./public/vendor/vendor.manifest.json')
-    // }),
-
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, './public/vendor/react.dll.js'),
+      manifest: path.resolve(__dirname, './public/vendor/react.manifest.json')
+    }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, './public/vendor/vendor.dll.js'),
+      manifest: path.resolve(__dirname, './public/vendor/vendor.manifest.json')
+    }),
     new htmlWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'index.html'),

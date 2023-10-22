@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 module.exports = {
     entry: {
-        react: ['react', 'react-dom', 'react-router-dom', 'react-redux'],
+        react: ['react', 'react-dom', 'react-router-dom', 'react-redux', '@reduxjs/toolkit'],
         vendor: ['jquery', 'swiper', 'lodash', 'axios', 'antd']
     },
     output: {

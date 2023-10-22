@@ -43,8 +43,6 @@
     "cors": "^2.8.5",
     "echarts": "^5.4.3",
     "echarts-gl": "^2.0.9",
-    "element-react": "^1.4.34",
-    "element-theme-default": "^1.4.13",
     "jquery": "^3.7.1",
     "jsonwebtoken": "^9.0.2",
     "kao2": "^1.1.3",

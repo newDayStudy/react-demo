@@ -9,7 +9,7 @@ module.exports = {
   "plugins": [
     [
       "import",
-      { "libraryName": "antd", "style": true }
+      { "libraryName": "antd", "style": true, 'libraryDirectory': 'es' }
     ]
   ]
 }

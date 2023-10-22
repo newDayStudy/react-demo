@@ -22,6 +22,7 @@ const items= [
     getItem("书籍", '/home/components/book',<BarsOutlined />),
     getItem("车品牌", '/home/components/car',<BarsOutlined />),
     getItem("自定义图表", '/home/components/custom',<BarsOutlined />),
+    getItem("面包屑", '/home/components/breadcrumb',<BarsOutlined />),
     getItem("3D", 'subMenu',<BarsOutlined />, [
         getItem("3D1", '/home/components/3d'),
         getItem("3D2", '/home/components/3d2'),
