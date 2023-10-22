@@ -7,8 +7,7 @@ const HappyPack = require('happypack')
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
 
-console.log(path.join(__dirname))
-
+const apiMocker = require('mocker-api')
 module.exports = {
   entry: './src/main.js',
   output: {
@@ -93,15 +92,18 @@ module.exports = {
   devServer: {
     contentBase: '.',
     open: false,
-    proxy: {
-      "/api": {
-        target: 'http://localhost:4000/',
-        crossorigin: true,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
+    before(app){
+      apiMocker(app, path.resolve('./src/mock/mocker.js'))
     }
+    // proxy: {
+    //   "/api": {
+    //     target: 'http://localhost:4000/',
+    //     crossorigin: true,
+    //     pathRewrite: {
+    //       '^/api': ''
+    //     }
+    //   }
+    // }
   },
   watch: true
 }
