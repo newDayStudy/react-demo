@@ -22,10 +22,13 @@ function RcTable() {
 
     return (
         <Table
+            size='small'
             rowKey="hashId"
             dataSource={list}
             columns={columns}
-        ></Table>
+        >
+
+        </Table>
     )
 }
 
