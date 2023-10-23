@@ -17,7 +17,7 @@ function RcTable() {
             params: pagination
         })
         console.log(res)
-        setList([...res.data.result])
+        setList([...res.data.result.data])
     }, [pagination]);
 
     return (

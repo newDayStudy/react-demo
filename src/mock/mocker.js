@@ -1,5 +1,6 @@
+const joke = require('./mock/joke.json')
 const proxy = {
-    'GET /api/joke': {result: [{hashId:1, content:'这是一个笑话'}]},
+    'GET /api/joke': joke,
     'POST /api/login': (req, res) => {
         const {password} = req.body
         if (password == '11111') {
