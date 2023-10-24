@@ -24,6 +24,7 @@ const items= [
     getItem("自定义图表", '/home/components/custom',<BarsOutlined />),
     getItem("虚拟滚动列表", '/home/components/breadcrumb',<BarsOutlined />),
     getItem("虚拟滚动列表1", '/home/components/virtualscroller',<BarsOutlined />),
+    getItem("不定高虚拟滚动列表", '/home/components/dynamicvirtualscroller',<BarsOutlined />),
     getItem("表格", '/home/components/table',<BarsOutlined />),
     getItem("3D", 'subMenu',<BarsOutlined />, [
         getItem("3D1", '/home/components/3d'),

@@ -20,6 +20,7 @@ import RcCustom from "@/components/echarts/custom";
 import RcFullScreen from "@/components/3D/fullscreen";
 import Rc3d3 from "@/components/3D/3d3";
 import ReactVirtualScroll from "@/components/react-virtual-scroll/react-virtual-scroll";
+import DynamicVirtualScroller from "@/components/react-virtual-scroll/Dynamic-virtual-scroller";
 const routes = [
   {
     path: '',
@@ -83,6 +84,12 @@ const routes = [
         path: 'components/virtualscroller',
         name: 'virtualscroller',
         component: <ReactVirtualScroll />,
+        auth: true
+      },
+      {
+        path: 'components/dynamicvirtualscroller',
+        name: 'dynamicvirtualscroller',
+        component: <DynamicVirtualScroller />,
         auth: true
       },
       {

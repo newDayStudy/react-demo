@@ -6,7 +6,6 @@ const hardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 const HappyPack = require('happypack')
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length})
-
 const apiMocker = require('mocker-api')
 module.exports = {
   entry: './src/main.js',

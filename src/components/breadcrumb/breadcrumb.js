@@ -26,7 +26,6 @@ function RcBreadcrumb(){
     const scrollRef = useRef()
     const data = list()
     useEffect(() => {
-        console.log(startIndex)
         setVisibleList(data.slice(startIndex, startIndex + 10))
     }, [startIndex]);
 
@@ -59,7 +58,7 @@ function RcBreadcrumb(){
                 >
                     {
                         visibleList.map(item => {
-                            return <li style={{ height: 50, lineHeight: '50px',background: 'red',borderBottom: '1px solid #000',boxSizing: 'border-box'}} key={item.id}>{item.name}</li>
+                            return <li style={{ height: 50, lineHeight: '50px',borderBottom: '1px solid #000',boxSizing: 'border-box', textAlign: 'center'}} key={item.id}>{item.name}</li>
                         })
                     }
                 </ul>

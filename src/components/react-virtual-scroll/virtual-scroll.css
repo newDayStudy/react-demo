@@ -1,6 +1,6 @@
 .virtual-scroller{
     overflow: auto;
-    border: 1px solid red;
+    border: 1px solid #ddd;
     position: relative;
 }
 .virtual-content{
@@ -16,7 +16,18 @@
 .virtual-item{
     height: 50px;
     line-height: 50px;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid #000000;
     text-align: center;
     box-sizing: border-box;
 }
+
+.dynamic-virtual{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+
+.dynamic-virtual-item{
+    border-bottom: 1px solid #000000;
+}
+
