@@ -72,7 +72,7 @@ module.exports = {
         threadPool: happyThreadPool,
         verbose: true
       }),
-    new hardSourceWebpackPlugin(),
+    // new hardSourceWebpackPlugin(),
     new CleanWebpackPlugin({}),
     new webpack.DllReferencePlugin({
       context: path.resolve(__dirname, './public/vendor/react.dll.js'),

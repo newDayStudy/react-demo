@@ -1,0 +1,22 @@
+.virtual-scroller{
+    overflow: auto;
+    border: 1px solid red;
+    position: relative;
+}
+.virtual-content{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top:0;
+    left:0;
+    right: 20px;
+    bottom: 0;
+}
+.virtual-item{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid red;
+    text-align: center;
+    box-sizing: border-box;
+}
