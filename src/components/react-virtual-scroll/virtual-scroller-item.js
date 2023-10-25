@@ -9,7 +9,9 @@ function VirtualScrollerItem(props){
         }
     }, [liRef])
     return (
-        <li ref={liRef} className='dynamic-virtual-item' style={{height: item.height}}>{item.name}</li>
+        <li ref={liRef} className='dynamic-virtual-item' style={{height: 'auto'}}>
+            {props.children}
+        </li>
     )
 }
 

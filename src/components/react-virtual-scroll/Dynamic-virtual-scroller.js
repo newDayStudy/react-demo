@@ -36,8 +36,6 @@ function DynamicVirtualScroller() {
     }, [startIndex])
     useEffect(() => {
         if (scrollerRef.current) {
-            const li = document.querySelectorAll('.dynamic-virtual-item')
-
             scrollerRef.current.onscroll = function () {
                 const scrollTop = this.scrollTop
                 let startIndex = getStartIndex(scrollTop)
@@ -87,7 +85,10 @@ function DynamicVirtualScroller() {
                 <div className='dynamic-virtual-height' style={{height: scrollBarHeight}}></div>
                 <ul className='virtual-content' style={{ transform: 'translate3d(0, '+offsetY+'px, 0)'}}>
                     {
-                        data.map(item =><VirtualScrollerItem key={item.id} item={item} updateItemHeight={updateItemHeight}/>)
+                        data.map(item =><VirtualScrollerItem key={item.id} item={item} updateItemHeight={updateItemHeight}>
+                            <p>{item.name}</p>
+                            <div style={{height: item.height}}></div>
+                        </VirtualScrollerItem>)
                     }
                 </ul>
             </div>
