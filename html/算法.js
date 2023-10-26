@@ -310,8 +310,94 @@ console.timeEnd()
 
 
 
-// 回溯算法
+// 深度广度
+
+const res = {
+    value: 'a',
+    children: [
+        {
+            value: 'b',
+            children: [
+                {
+                    value: 'd',
+                    children: []
+                },
+                {
+                    value: 'e',
+                    children: []
+                },
+                {
+                    value: 'f',
+                    children: []
+                }
+            ]
+        },
+        {
+            value: 'c',
+            children: [
+                {
+                    value: 'g',
+                    children: []
+                },
+                {
+                    value: 'h',
+                    children: []
+                },
+                {
+                    value: 'i',
+                    children: []
+                }
+            ]
+        }
+    ]
+}
+
+// 深度
+function DFS(data){
+    if (!data) return
+    console.log('DFS', data.value)
+    data.children.forEach(item => {
+        DFS(item)
+    } )
+}
+
+DFS(res)
+
+// 广度
+function BFS(data){
+    if (!data) return
+    const queue = [data]
+    while (queue.length){
+        const top = queue.shift()
+        console.log('BFS', top.value)
+        top.children.forEach(child => {
+            queue.push(child)
+        })
+    }
+}
+
+BFS(res)
 
 
+// 回溯
 
+var combine = function (n, k){
+    let res = [], path = []
+    combineHelper(n, k, 1)
+    return res
+
+    function combineHelper(n, k, startIndex){
+        if (path.length == k) {
+            res.push([...path])
+            return
+        }
+        for (let i = startIndex; i<=n-(k-path.length) + 1; i++) {
+            path.push(i)
+            combineHelper(n, k, i+1)
+            path.pop()
+        }
+    }
+}
+
+console.log(combine(4, 2))
 
